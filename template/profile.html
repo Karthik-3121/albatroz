@@ -1,0 +1,286 @@
+{% extends 'layout_main.html'%}
+
+
+{% load static %}
+
+
+{% block 'mainblock' %}
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+<link href='https://cdn.jsdelivr.net/npm/boxicons@1.9.2/css/boxicons.min.css' rel='stylesheet'>
+
+<!-- Styles -->
+<link href="{% static 'css/bootstrap/bootstrap.min.css'%}" rel="stylesheet">
+<link href="{% static 'css/style.css'%}" rel="stylesheet">
+<link href="{% static 'css/components.css'%}" rel="stylesheet">
+<link href="{% static 'css/profile.css'%}" rel="stylesheet">
+<link href="{% static 'css/media.css'%}" rel="stylesheet">
+<script src="{% static 'js/load.js'%}" type="text/javascript"></script>
+
+<div class="row profile-right-side-content">
+    <div class="user-profile">
+        <div class="profile-header-background">
+            <a href="#" class="profile-cover">
+                <img src="{% static 'images/users/cover/cover-1.gif'%}" alt="Profile Header Background">
+            </a>
+        </div>
+        <div class="row profile-rows">
+            <div class="col-md-3">
+                <div class="profile-info-left">
+                    <div class="text-center">
+                        <div class="profile-img w-shadow">
+                            <div class="profile-img-overlay"></div>
+                            <img src="{% static 'images/user_image.jpg' %}" alt="Avatar" class="avatar img-circle">
+                            <div class="profile-img-caption">
+                                <label for="updateProfilePic" class="upload">
+                                    <i class='bx bxs-camera'></i> Update
+                                    <input type="file" id="updateProfilePicInput" class="text-center upload">
+                                </label>
+                            </div>
+                        </div>
+                        <p class="profile-fullname mt-3">{{userinfo.fname}} {{userinfo.lname}}</p>
+                        <p class="profile-username mb-3 text-muted">@{{userinfo.username}}</p>
+                    </div>
+
+                    <div class="intro mt-5 mv-hidden">
+                        <div>
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                            </form>
+                        </div>
+                        <div class="intro-item d-flex justify-content-between align-items-center">
+                            <h3 class="intro-about">Intro</h3>
+                        </div>
+                        <div class="intro-item d-flex justify-content-between align-items-center">
+                            <p class="intro-title text-muted"><i class='bx bx-briefcase text-primary'></i>{{userinfo.userbio}}</p>
+                        </div>
+                        <div class="intro-item d-flex justify-content-between align-items-center">
+                            <p class="intro-title text-muted"><i class='bx bx-map text-primary'></i> Pronouns <a
+                                    href="#">{{userinfo.userpronouns}}</a></p>
+                        </div>
+                        <div class="intro-item d-flex justify-content-between align-items-center">
+                            <p class="intro-title text-muted"><i class='bx bx-map text-primary'></i> Address <a
+                                    href="#">{{userinfo.address}}</a></p>
+                        </div>
+                        <div class="intro-item d-flex justify-content-between align-items-center">
+                            <p class="intro-title text-muted"><i class='bx bx-map text-primary'></i> Phone No <a
+                                    href="#">{{userinfo.ph}}</a></p>
+                        </div>
+                        <div class="intro-item d-flex justify-content-between align-items-center">
+                            <p class="intro-title text-muted"><i class='bx bx-map text-primary'></i> Email <a
+                                    href="#">{{userinfo.email}}</a></p>
+                        </div>
+                        <div class="intro-item d-flex justify-content-between align-items-center">
+                            <p class="intro-title text-muted"><i class='bx bx-time text-primary'></i> Last Login <a
+                                    href="#">Online <span class="ml-1 online-status bg-success"></span></a></p>
+                        </div>
+                        <div class="intro-item d-flex justify-content-between align-items-center">
+                            <a href="/settings/" class="btn btn-quick-link join-group-btn border w-100">Edit Details</a>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            <div class="col-md-9 p-0">
+                <div class="profile-info-right">
+
+                    <!-- Posts section -->
+                    <div class="row">
+                        <div class="col-md-9 profile-center">
+                            <ul class="list-inline profile-links d-flex justify-content-between w-shadow rounded">
+                                <li class="list-inline-item profile-active">
+                                    <a href="{% url 'profile'%}">Add post</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="{% url 'profilepost'%}">view post</a>
+                                </li>
+                                
+                            </ul>
+                            <ul class="list-unstyled" style="margin-bottom: 0;">
+                                <li class="media post-form w-shadow" style="background: white;">
+                                    <!-- <div class="col-md-3 col-sm-12"> -->
+                                        <h6 class="timeline-title" style="padding-left: 30px; padding-top: 30px; ">Post</h6>
+                                    <!-- </div> -->
+                                    <div class="bg-white profile-posts-options mt-5 mb-4 py-3 d-flex justify-content-between shadow-sm">
+                                        
+                                        <form enctype="multipart/form-data" method="post">
+                                            {% csrf_token %}
+                                            <div class="form-row">                                              
+                                              <div class="form-group" style="padding-left: 50px; padding-right: 50px;">
+                                                <textarea type="text" class="form-control" name="description" id="description" placeholder="description"></textarea>
+                                            
+                                              </div>
+                                            <div class="form-group">
+                                              <input type="file" class="form-control" name="postimage" id="postimage" accept="image/*" placeholder="Add image"  />
+                                                                        </div>                                        
+                                            <div class="text-center"><button class="btn btn-success" type="submit">Upload></div>
+                                          </form>
+                                    </div>
+                                </li>
+                            </ul>
+                       
+                            
+                            
+                        </div>
+                        <!--<div class="col-md-3 profile-quick-media">
+                                            <h6 class="text-muted timeline-title">Recent Media</h6>
+                                            <div class="quick-media">
+                                                <div class="media-overlay"></div>
+                                                <a href="#" class="quick-media-img"><img src="{% static 'images/users/album/album-1.jpg'%}" alt="Quick media"></a>
+                                                <div class="media-overlay-content">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="media-overlay-owner">
+                                                            <img src="{% static 'images/users/user-12.png'%}" alt="Media owner image">
+                                                            <span class="overlay-owner-name fs-9">Irwin M. Spelle</span>
+                                                        </div>
+                                                        <div class="dropdown">
+                                                            <a href="#" class="overlay-more" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class='bx bx-dots-horizontal-rounded'></i></a>
+                                                            <div class="dropdown-menu dropdown-menu-right nav-drop dropdown-shadow">
+                                                                <a class="dropdown-item" href="#">Save post</a>
+                                                                <a class="dropdown-item" href="#">Turn on notifications</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="overlay-bottom d-flex justify-content-between align-items-center">
+                                                        <div class="argon-reaction">
+                                                            <span class="like-btn">
+                                                                <a href="#" class="post-card-buttons" id="reactions"><i class='bx bxs-like mr-1'></i> 67</a>
+                                                                <ul class="reactions-box dropdown-shadow">
+                                                                    <li class="reaction reaction-like" data-reaction="Like"></li>
+                                                                    <li class="reaction reaction-love" data-reaction="Love"></li>
+                                                                    <li class="reaction reaction-haha" data-reaction="HaHa"></li>
+                                                                    <li class="reaction reaction-wow" data-reaction="Wow"></li>
+                                                                    <li class="reaction reaction-sad" data-reaction="Sad"></li>
+                                                                    <li class="reaction reaction-angry" data-reaction="Angry"></li>
+                                                                </ul>
+                                                            </span>
+                                                        </div>
+                                                        <div class="liked-users">
+                                                            <img src="{% static 'images/users/user-9.png'%}" alt="Liked users">
+                                                            <img src="{% static 'images/users/user-6.png'%}" alt="Liked users">
+                                                            <img src="{% static 'images/users/user-12.png'%}" alt="Liked users">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="quick-media">
+                                                <div class="media-overlay"></div>
+                                                <a href="#" class="quick-media-img"><img src="{% static 'images/users/album/album-2.jpg'%}" alt="Quick media"></a>
+                                                <div class="media-overlay-content">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="media-overlay-owner">
+                                                            <img src="{% static 'images/users/user-12.png'%}" alt="Media owner image">
+                                                            <span class="overlay-owner-name fs-9">Irwin M. Spelle</span>
+                                                        </div>
+                                                        <div class="dropdown">
+                                                            <a href="#" class="overlay-more" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class='bx bx-dots-horizontal-rounded'></i></a>
+                                                            <div class="dropdown-menu dropdown-menu-right nav-drop dropdown-shadow">
+                                                                <a class="dropdown-item" href="#">Save post</a>
+                                                                <a class="dropdown-item" href="#">Turn on notifications</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="overlay-bottom d-flex justify-content-between align-items-center">
+                                                        <div class="argon-reaction">
+                                                            <span class="like-btn">
+                                                                <a href="#" class="post-card-buttons" id="reactions"><i class='bx bxs-like mr-1'></i> 67</a>
+                                                                <ul class="reactions-box dropdown-shadow">
+                                                                    <li class="reaction reaction-like" data-reaction="Like"></li>
+                                                                    <li class="reaction reaction-love" data-reaction="Love"></li>
+                                                                    <li class="reaction reaction-haha" data-reaction="HaHa"></li>
+                                                                    <li class="reaction reaction-wow" data-reaction="Wow"></li>
+                                                                    <li class="reaction reaction-sad" data-reaction="Sad"></li>
+                                                                    <li class="reaction reaction-angry" data-reaction="Angry"></li>
+                                                                </ul>
+                                                            </span>
+                                                        </div>
+                                                        <div class="liked-users">
+                                                            <img src="{% static 'images/users/user-9.png'%}" alt="Liked users">
+                                                            <img src="{% static 'images/users/user-6.png'%}" alt="Liked users">
+                                                            <img src="{% static 'images/users/user-12.png'%}" alt="Liked users">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="quick-media">
+                                                <div class="media-overlay"></div>
+                                                <a href="#" class="quick-media-img"><img src="{% static 'images/users/album/album-3.jpg'%}" alt="Quick media"></a>
+                                                <div class="media-overlay-content">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div class="media-overlay-owner">
+                                                            <img src="{% static 'images/users/user-12.png'%}" alt="Media owner image">
+                                                            <span class="overlay-owner-name fs-9">Irwin M. Spelle</span>
+                                                        </div>
+                                                        <div class="dropdown">
+                                                            <a href="#" class="overlay-more" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class='bx bx-dots-horizontal-rounded'></i></a>
+                                                            <div class="dropdown-menu dropdown-menu-right nav-drop dropdown-shadow">
+                                                                <a class="dropdown-item" href="#">Save post</a>
+                                                                <a class="dropdown-item" href="#">Turn on notifications</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="overlay-bottom d-flex justify-content-between align-items-center">
+                                                        <div class="argon-reaction">
+                                                            <span class="like-btn">
+                                                                <a href="#" class="post-card-buttons" id="reactions"><i class='bx bxs-like mr-1'></i> 67</a>
+                                                                <ul class="reactions-box dropdown-shadow">
+                                                                    <li class="reaction reaction-like" data-reaction="Like"></li>
+                                                                    <li class="reaction reaction-love" data-reaction="Love"></li>
+                                                                    <li class="reaction reaction-haha" data-reaction="HaHa"></li>
+                                                                    <li class="reaction reaction-wow" data-reaction="Wow"></li>
+                                                                    <li class="reaction reaction-sad" data-reaction="Sad"></li>
+                                                                    <li class="reaction reaction-angry" data-reaction="Angry"></li>
+                                                                </ul>
+                                                            </span>
+                                                        </div>
+                                                        <div class="liked-users">
+                                                            <img src="{% static 'images/users/user-9.png'%}" alt="Liked users">
+                                                            <img src="{% static 'images/users/user-6.png'%}" alt="Liked users">
+                                                            <img src="{% static 'images/users/user-12.png'%}" alt="Liked users">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- New message modal -->
+<div class="modal fade" id="newMessageModal" tabindex="-1" role="dialog" aria-labelledby="newMessageModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header new-msg-header">
+                <h5 class="modal-title" id="newMessageModalLabel">Start new conversation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body new-msg-body">
+                <form action="" method="" class="new-msg-form">
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control search-input" rows="5" id="message-text"
+                            placeholder="Type a message..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer new-msg-footer">
+                <button type="button" class="btn btn-primary btn-sm">Send message</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

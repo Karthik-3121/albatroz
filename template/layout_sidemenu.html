@@ -1,0 +1,47 @@
+{% load static %}
+
+
+<div class="row newsfeed-right-side-content mt-3">
+    <div class="col-md-3 newsfeed-left-side sticky-top shadow-sm" id="sidebar-wrapper">
+        <div class="card newsfeed-user-card h-100">
+            <ul class="list-group list-group-flush newsfeed-left-sidebar">
+                <li class="list-group-item">
+                    <h6>Dashboard</h6>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center sd-active">
+                    <a href="{% url 'home'%}" class="sidebar-item"><img style="height:25px;width:25px" src="{% static 'images/icons/left-sidebar/home.png'%}" alt="newsfeed">Home</a>
+                    <a href="#" class="newsfeedListicon"><i class='bx bx-dots-horizontal-rounded'></i></a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="{% url 'popular'%}" class="sidebar-item"><img src="{% static 'images/icons/left-sidebar/fire.png'%}" alt="matches">Popular</a>
+                    <span class="badge badge-primary badge-pill" ><i class='bx bx-chevron-right'></i></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="{% url 'messages'%}" class="sidebar-item"><img style="height:25px;width:25px !important;" src="{% static 'images/icons/left-sidebar/plane.png'%}"   alt="message"> Messages</a>
+                    <span class="badge badge-primary badge-pill"><i class='bx bx-chevron-right'></i></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="{% url 'find_friends'%}" class="sidebar-item"><img src="{% static 'images/icons/left-sidebar/find-friends.png'%}" alt="group"> find friends</a>
+                    <span class="badge badge-primary badge-pill"><i class='bx bx-chevron-right'></i></span>
+                </li>
+
+                <li>
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img class="d-block w-100" src="{% static 'images/slider/1.jpg'%}" alt="First slide">
+                          </div>
+                          <div class="carousel-item">
+                            <img class="d-block w-100" src="{% static 'images/slider/2.jpg'%}" alt="Second slide">
+                          </div>
+                          <div class="carousel-item">
+                            <img class="d-block w-100" src="{% static 'images/slider/3.jpg'%}" alt="Third slide">
+                          </div>
+                        </div>
+                      </div>
+                </li>
+            </ul>
+           
+        </div>
+    </div>
+<!-- </div> -->

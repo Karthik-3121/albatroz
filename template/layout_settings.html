@@ -1,0 +1,42 @@
+{% load static %}
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@1.9.2/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Styles -->
+    <link href="{% static 'css/bootstrap/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'css/style.css'%}" rel="stylesheet">
+    <link href="{% static 'css/components.css'%}" rel="stylesheet">
+    <link href="{% static 'css/settings.css'%}" rel="stylesheet">
+    <link href="{% static 'css/forms.css'%}" rel="stylesheet">
+    <link href="{% static 'css/media.css'%}" rel="stylesheet">
+
+                <div class="row message-right-side-content">
+                    <div class="col-md-12">
+                        <div id="message-frame">
+                            <div class="message-sidepanel">
+                                <div class="message-contacts">
+                                    <ul class="conversations">
+                                        <h6 class="p-3">General Settings</h6>
+                                        <li class="contact setting-active">
+                                            <a href="{% url 'settings'%}" class="wrap d-flex align-items-center">
+                                                <i class='bx bxs-user'></i>
+                                                <div class="meta">
+                                                    <p>ADD Account Info</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                       
+                                        <li class="contact setting-active">
+                                            <a href="{% url 'settings-change'%}" class="wrap d-flex align-items-center">
+                                                <i class='bx bx-block'></i>
+                                                <div class="meta">
+                                                    <p>Change Info</p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
